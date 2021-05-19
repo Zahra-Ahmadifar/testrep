@@ -1,7 +1,5 @@
 package model.entity;
 
-import com.sun.istack.internal.NotNull;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -13,12 +11,12 @@ public class Entity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(columnDefinition = "INTEGER", nullable = false, unique = true)
+    @Column(name = "c_id",columnDefinition = "INTEGER", nullable = false, unique = true)
     public int id;
 
     @Version
-    @NotNull
-    public long version;
+    @Column(name = "version")
+    public int version=0;
 
     @Column(name = "c_active", columnDefinition = "boolean")
     public boolean active;
@@ -34,11 +32,11 @@ public class Entity implements Serializable {
         this.id = id;
     }
 
-    public long getVersion() {
+    public int getVersion() {
         return version;
     }
 
-    public void setVersion(long version) {
+    public void setVersion(int version) {
         this.version = version;
     }
 

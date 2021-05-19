@@ -1,5 +1,7 @@
 package model.entity;
 
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 import javax.persistence.*;
 import javax.persistence.Entity;
 import java.util.HashSet;
@@ -10,6 +12,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "t_employee")
+@SelectBeforeUpdate
 public class Employee extends model.entity.Entity {
 
     @Column(name = "c_firstName", columnDefinition = "VARCHAR(255)")
@@ -40,13 +43,21 @@ public class Employee extends model.entity.Entity {
     @Column(name = "c_password", columnDefinition = "VARCHAR(255)")
     private String password;
 
-    @OneToMany()
-    @JoinColumn(name = "c_emailSenderId")
+    @OneToMany(mappedBy = "employee")
     private Set<Email> sentEmails = new HashSet<Email>();
 
     @OneToMany()
     @JoinColumn(name = "c_employeeId")
     private Set<EmployeeLeave> leaveList = new HashSet<EmployeeLeave>();
+
+    public Employee(int id, String firstName, String lastName, String fatherName, String email) {
+        this.id =id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.email = email;
+
+    }
 
     public Employee(String firstName, String lastName, String fatherName, CategoryElement position, String email, Employee manager, String username, String password) {
         this.firstName = firstName;
@@ -59,15 +70,39 @@ public class Employee extends model.entity.Entity {
         this.password = password;
     }
 
+    public Employee(int id,String firstName, String lastName, String fatherName, CategoryElement position, String email, Employee manager, String username, String password) {
+        this.id=id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.position = position;
+        this.email = email;
+        this.manager = manager;
+    }
+
+    public Employee(int id,boolean active,boolean disable,String email,String fatherName,String firstName, String lastName, Employee manager,String password, CategoryElement position,  String username) {
+        this.id=id;
+        this.active=active;
+        this.disable=disable;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.fatherName = fatherName;
+        this.position = position;
+        this.email = email;
+        this.manager = manager;
+        this.username=username;
+        this.password=password;
+    }
+
     public Employee(String firstName, String lastName, String username) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-
     }
 
     public Employee() {
     }
+
 
     public String getfirstName() {
         return firstName;

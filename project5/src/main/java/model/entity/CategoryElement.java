@@ -15,7 +15,8 @@ public class CategoryElement extends model.entity.Entity {
     @Column(name = "c_code", columnDefinition = "VARCHAR(255)")
     private String code;
 
-    @ManyToOne
+
+    @ManyToOne()
     @JoinColumn(name = "c_categoryId")
     private Category category;
 

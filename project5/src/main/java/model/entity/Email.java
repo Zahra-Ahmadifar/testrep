@@ -14,7 +14,7 @@ import java.util.Set;
 public class Email extends model.entity.Entity {
 
     @ManyToOne
-    @JoinColumn(name = "c_id")
+    @JoinColumn(name = "c_emailSenderId")
     private Employee employee;
 
     @Column(name = "c_emailsubject", columnDefinition = "VARCHAR(255)")
@@ -31,6 +31,7 @@ public class Email extends model.entity.Entity {
             joinColumns = {@JoinColumn(name = "c_emailReceiverId")},
             inverseJoinColumns = {@JoinColumn(name = "c_receiverEmailId")})
     private Set<Employee> receiverEmployees = new HashSet<Employee>();
+
 
     public Email(Employee employee, String emailSubject, String emailBody, List<String> attachment, Set<Employee> receiverEmployees) {
         this.employee = employee;

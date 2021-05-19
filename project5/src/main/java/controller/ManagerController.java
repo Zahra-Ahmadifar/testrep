@@ -133,6 +133,7 @@ public class ManagerController extends HttpServlet {
 
 
     public void search(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         Employee employee = new Employee(req.getParameter("firstName"), req.getParameter("lastName")
                 , req.getParameter("username"));
         List<Employee> employeeList = ManagerService.getInstance().searchEmployee(employee);

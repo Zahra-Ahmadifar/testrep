@@ -49,21 +49,21 @@
             </div>
             <div>
 
-                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px;"> <span
+                <button type="submit" class="btn btn-primary" style="margin-bottom: 10px; "> <span
                         class="fa fa-search">جستجو</span></button>
             </div>
+
         </div>
     </form>
 
 
-    <table class="table table-bordered table-hover table-responsive-lg">
+    <table class="table table-bordered table-hover table-responsive-lg" >
         <thead class="thead-light ">
         <tr style="border-radius: 10px;">
             <th class="text-center" scope="col">نام</th>
             <th class="text-center" scope="col">نام خانوادگی</th>
             <th class="text-center" scope="col">مدیر</th>
             <th class="text-center" scope="col">مقام</th>
-            <th class="text-center" scope="col">وضعیت</th>
             <th class="text-center" scope="col">عملیات</th>
         </tr>
         </thead>
@@ -74,8 +74,7 @@
                 <td><c:out value="${employee.firstName}"/></td>
                 <td><c:out value="${employee.lastName}"/></td>
                 <td><c:out value="${employee.manager.firstName} ${employee.manager.lastName}"/></td>
-                <td><c:out value="${employee.post.name}"/></td>
-                <td><c:out value="${employee.employeeStatus.name}"/></td>
+                <td><c:out value="${employee.position.name}"/></td>
                 <td class="text-right" style="width: 21%;">
                     <button type="button"
                             class="btn btn-primary btn-rounded btn-lm my-0 badge-pill " value="update"

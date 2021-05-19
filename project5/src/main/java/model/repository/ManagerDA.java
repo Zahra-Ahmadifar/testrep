@@ -177,7 +177,7 @@ public class ManagerDA {
         List<Employee> employeeList = new ArrayList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Query query = session.createQuery("select distinct e from Employee e join fetch e.leaveList le " +
-                    "where el.leaveStatus.code =:registered  and e.manager =: manager ");
+                    "where le.leaveStatus.code =:registered  and e.manager =: manager ");
             query.setParameter("manager", managerEmployee);
             query.setParameter("registered", "registered");
             employeeList = query.getResultList();
